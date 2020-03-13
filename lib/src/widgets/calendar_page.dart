@@ -100,7 +100,7 @@ class _CalendarPageState extends State<_CalendarPage> {
     widget.calendarController._focusedDay.value = day;
     focusedDay = day;
 
-    _selectedDayCallback(day);
+    _selectedDayCallback(day,isTapAction:true);
 
     setState(() {
       if (widget.calendarController.calendarFormat == CalendarFormat.twoWeeks) {
@@ -109,9 +109,9 @@ class _CalendarPageState extends State<_CalendarPage> {
     });
   }
 
-  void _selectedDayCallback(DateTime day) {
+  void _selectedDayCallback(DateTime day,{bool isTapAction = false}) {
     if (widget.onDaySelected != null) {
-      widget.onDaySelected(day, widget.events[_getEventKey(day)] ?? []);
+      widget.onDaySelected(day, widget.events[_getEventKey(day)] ?? [],isTapAction:true);
     }
   }
 
